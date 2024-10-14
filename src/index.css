@@ -1,0 +1,76 @@
+*{
+    font-family: "Poppins", sans-serif;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#desktop_area .active{
+    @apply before:bg-sky-500 text-sky-500;
+}
+#mobile_area .active{
+    @apply text-sky-500;
+}
+#work-btn{
+    @apply w-44 justify-center py-2 bg-teal-400 rounded text-white flex items-center gap-2 cursor-pointer;
+}
+#work-btn.active{
+    @apply w-44 justify-center py-2 bg-teal-400 rounded text-white flex items-center gap-2 cursor-pointer;
+}
+.gradinet-text{
+    @apply bg-gradient-to-r from-sky-500 to-teal-600 bg-clip-text text-transparent;
+}
+.section-title{
+    @apply text-3xl text-white font-bold relative before:absolute before:h-1 before:w-3/5 before:-bottom-2 before:left-0 before:bg-pink-600 inline-block mb-5;
+}
+.section-para{
+    @apply flex gap-3 items-center text-zinc-500;
+}
+.showcase-icon{
+    @apply text-white bg-zinc-800 w-24 flex items-center flex-col py-3 cursor-pointer rounded hover:shadow-xl hover:shadow-zinc-500/20;
+}
+.msgContainer:nth-child(even) #msgBox{
+    @apply bg-orange-300;
+}
+.msgContainer:nth-child(odd) #msgBox{
+    @apply bg-violet-300;
+}
+.sidebarNavlink {
+    @apply flex items-center gap-2 bg-zinc-800 text-white px-5 py-2 rounded font-bold relative before:absolute overflow-hidden before:content-[''] before:left-0 before:top-0 before:h-full before:w-2 before:bg-white;
+}
+.sidebarNavlink.active{
+    @apply bg-blue-500
+}
+.form__input{
+    @apply rounded-md outline-blue-500 px-5 py-3 w-[300px] border-white text-xs font-normal bg-transparent border-2
+}
+.mobileSideBar{
+    @apply flex gap-3 bg-orange-400 p-2 rounded  text-white
+}
+.img_thumb{
+    background-image: url('./assets/placeholder.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.profile_contact_input{
+    @apply bg-transparent border px-3 py-2 rounded-sm w-full md:w-[400px] border-white/20 outline-none text-white hover:border-white/30
+}
+#loader{
+    animation: loading 1s linear infinite;
+    transition: all ease 5s;
+}
+.card{
+    @apply w-[400px] rounded-md p-3 h-[400px] shadow-md border-t-4 border-indigo-500 bg-white flex items-center justify-center;
+}
+
+
+@keyframes loading {
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+    
+}
