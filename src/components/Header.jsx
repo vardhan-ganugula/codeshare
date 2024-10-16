@@ -10,9 +10,9 @@ function Header() {
 
   return (
     <>
-      <nav className="fixed z-10 w-full px-5 pt-4 pb-2 flex justify-around border-b-2 border-white/10 bg-white">
+      <nav className="z-10 w-full px-5 pt-4 pb-2 flex shadow mb-2 justify-around border-b-2 border-white/10 bg-white">
         {/* logo */}
-        <div className="text-2xl text-black font-bold ">
+        <div className="text-2xl text-black font-extrabold ">
           {import.meta.env.VITE_APPNAME}
         </div>
 
@@ -22,7 +22,7 @@ function Header() {
             <li key={item.linkName}>
               <NavLink
                 to={item.url}
-                className="text-black font-medium cursor-pointer relative before:absolute before:contents-[*] before:-bottom-2 before:h-[2.5px] before:w-full before:hover:bg-sky-500 hover:text-sky-500"
+                className="text-black font-medium cursor-pointer relative before:absolute before:contents-[*] before:-bottom-2 before:h-[2.5px] before:w-full before:hover:bg-indigo-500 hover:text-indigo-500"
               >
                 {item.linkName}
               </NavLink>

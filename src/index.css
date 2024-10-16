@@ -1,5 +1,6 @@
 *{
     font-family: "Poppins", sans-serif;
+    user-select: none;
 }
 @tailwind base;
 @tailwind components;
@@ -7,19 +8,19 @@
 
 
 #desktop_area .active{
-    @apply before:bg-sky-500 text-sky-500;
+    @apply before:bg-indigo-500 text-indigo-500;
 }
 #mobile_area .active{
-    @apply text-sky-500;
+    @apply text-indigo-500;
 }
 #work-btn{
-    @apply w-44 justify-center py-2 bg-teal-400 rounded text-white flex items-center gap-2 cursor-pointer;
+    @apply w-44 justify-center py-2 bg-indigo-400 rounded text-white flex items-center gap-2 cursor-pointer;
 }
 #work-btn.active{
-    @apply w-44 justify-center py-2 bg-teal-400 rounded text-white flex items-center gap-2 cursor-pointer;
+    @apply w-44 justify-center py-2 bg-indigo-400 rounded text-white flex items-center gap-2 cursor-pointer;
 }
 .gradinet-text{
-    @apply bg-gradient-to-r from-sky-500 to-teal-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-indigo-500 to-indigo-600 bg-clip-text text-transparent;
 }
 .section-title{
     @apply text-3xl text-white font-bold relative before:absolute before:h-1 before:w-3/5 before:-bottom-2 before:left-0 before:bg-pink-600 inline-block mb-5;
@@ -40,10 +41,10 @@
     @apply flex items-center gap-2 bg-zinc-800 text-white px-5 py-2 rounded font-bold relative before:absolute overflow-hidden before:content-[''] before:left-0 before:top-0 before:h-full before:w-2 before:bg-white;
 }
 .sidebarNavlink.active{
-    @apply bg-blue-500
+    @apply bg-indigo-500
 }
 .form__input{
-    @apply rounded-md outline-blue-500 px-5 py-3 w-[300px] border-white text-xs font-normal bg-transparent border-2
+    @apply rounded-md outline-indigo-500 px-5 py-3 w-[300px] border-white text-xs font-normal bg-transparent border-2
 }
 .mobileSideBar{
     @apply flex gap-3 bg-orange-400 p-2 rounded  text-white
@@ -62,9 +63,15 @@
     transition: all ease 5s;
 }
 .card{
-    @apply w-[400px] rounded-md p-3 h-[400px] shadow-md border-t-4 border-indigo-500 bg-white flex items-center justify-center;
+    @apply w-[400px] rounded-md p-3 h-[400px] border-t-4 border-b-4 shadow-md  border-indigo-500 bg-white flex items-center justify-center flex-col gap-3 border-b-white;
 }
+.card:hover{
+    @apply border-b-indigo-500 ;
 
+    &button{
+        @apply cursor-pointer;
+    }
+}
 
 @keyframes loading {
     from{
