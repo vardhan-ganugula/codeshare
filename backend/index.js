@@ -6,8 +6,12 @@ const {handleGetCode,handlePutText} = require('./controllers/testShare')
 require("dotenv").config();
 
 
+const corsOptions = {
+  origin: 'https://textshare.vardhan.works', 
+  optionsSuccessStatus: 200 
+};
 
-// app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 app.use(express.static('dist'))
