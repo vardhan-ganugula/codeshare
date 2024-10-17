@@ -1,6 +1,7 @@
 *{
     font-family: "Poppins", sans-serif;
     user-select: none;
+    -webkit-user-drag: none;
 }
 @tailwind base;
 @tailwind components;
@@ -68,9 +69,10 @@
 .card:hover{
     @apply border-b-indigo-500 ;
 
-    &button{
-        @apply cursor-pointer;
-    }
+    
+}
+.card:hover button{
+    @apply cursor-pointer;
 }
 
 @keyframes loading {
