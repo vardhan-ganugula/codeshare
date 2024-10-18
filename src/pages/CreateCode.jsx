@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import axiosProfile from "../utils/axiosProfile";
 
 function CreateCode() {
-  const codeRef = useRef();
   const [codeText, setCodetext] = useState("write you text here");
   const [code, setCode] = useState("");
   const handleTextCode = (e) => {
@@ -43,7 +42,7 @@ function CreateCode() {
   return (
     <>
       <Header />
-      <main className="md:h-[87vh] h-screen w-full p-2 flex flex-col gap-2 md:flex-row">
+      <main className="md:h-[87vh] h-auto w-full p-2 flex flex-col gap-2 md:flex-row">
         <aside className="md:w-[350px] w-full p-2 md:h-full border-r-2 border-gray-100 ">
           <form className="w-full shadow rounded" onSubmit={handleCreateCode}>
             <h1 className="bg-indigo-500 py-2 text-center rounded text-white">
@@ -66,7 +65,7 @@ function CreateCode() {
             </div>
           </form>
         </aside>
-        <section className="w-full flex-grow h-full">
+        <section className="w-full flex-grow md:h-full sm:min-h-[50vh]">
           <textarea
             className="w-full h-full outline-none p-3"
             value={codeText}

@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 function HomepageMain() {
   const navigate = useNavigate();
   return (
-    <main className="bg-gray-100 h-screen w-full">
-      <div className="h-full w-full flex items-center justify-center flex-col md:flex-row gap-3">
+    <main className="bg-gray-100 h-screen w-full overflow-hidden">
+      <div className="h-full w-full flex items-center justify-center flex-col md:flex-row gap-3 p-3">
         <section className="card">
           <img
             src={People}

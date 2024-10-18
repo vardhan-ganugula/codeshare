@@ -64,7 +64,7 @@
     transition: all ease 5s;
 }
 .card{
-    @apply w-[400px] rounded-md p-3 h-[400px] border-t-4 border-b-4 shadow-md  border-indigo-500 bg-white flex items-center justify-center flex-col gap-3 border-b-white;
+    @apply w-[350px] rounded-md p-3 h-[400px] border-t-4 border-b-4 shadow-md  border-indigo-500 bg-white flex items-center justify-center flex-col gap-3 border-b-white;
 }
 .card:hover{
     @apply border-b-indigo-500 ;

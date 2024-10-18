@@ -10,7 +10,7 @@ function Header() {
 
   return (
     <>
-      <nav className="z-10 w-full px-5 pt-4 pb-2 flex shadow mb-2 justify-around border-b-2 border-white/10 bg-white">
+      <nav className="z-10 w-full px-4 pt-4 pb-2 flex shadow justify-around border-b-2 border-white/10 bg-white">
         {/* logo */}
         <div className="text-2xl text-black font-extrabold ">
           {import.meta.env.VITE_APPNAME}
@@ -31,7 +31,7 @@ function Header() {
         </ul>
 
         {/* mobile navbar controls */}
-        <div className="flex md:hidden items-center text-white">
+        <div className="flex md:hidden items-center text-black">
           <div>
             <HiMiniBars3BottomRight
               size={25}
