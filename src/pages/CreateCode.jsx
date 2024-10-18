@@ -43,7 +43,7 @@ function CreateCode() {
   return (
     <>
       <Header />
-      <main className="h-[87vh] w-full p-2 flex flex-col gap-2 md:flex-row">
+      <main className="md:h-[87vh] h-screen w-full p-2 flex flex-col gap-2 md:flex-row">
         <aside className="md:w-[350px] w-full p-2 md:h-full border-r-2 border-gray-100 ">
           <form className="w-full shadow rounded" onSubmit={handleCreateCode}>
             <h1 className="bg-indigo-500 py-2 text-center rounded text-white">
