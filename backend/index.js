@@ -1,8 +1,7 @@
-const express = require("express");
+const {io, server, app} = require('./utils/server')
 const mongoose = require("mongoose");
-const app = express();
 const cors = require('cors')
-const {handleGetCode,handlePutText} = require('./controllers/testShare')
+const {handleGetCode,handlePutText,handleUpdateText} = require('./controllers/testShare')
 require("dotenv").config();
 
 
@@ -11,25 +10,30 @@ const corsOptions = {
   optionsSuccessStatus: 200 
 };
 
-app.use(cors(corsOptions))
-app.use(express.json())
-app.use(express.urlencoded({extended : true}))
-app.use(express.static('dist'))
+
+
+
+
+app.use(cors())
+
 mongoose
   .connect(process.env.MONGOOSE_URI)
   .then((success) => console.log("connection success"))
   .catch(err=> console.log(err));
 
 
+
+
+
+
 app.get('/view-text', handleGetCode);
 app.post('/create-text', handlePutText);
+app.post('/update-text', handleUpdateText)
 
 
-app.listen(process.env.PORT, function(con){
+server.listen(process.env.PORT, function(con){
     console.log('server running at port:' + process.env.PORT)
 });
-
-
 
 
 
