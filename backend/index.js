@@ -14,7 +14,7 @@ const corsOptions = {
 
 
 
-app.use(cors())
+app.use(cors(corsOptions))
 
 mongoose
   .connect(process.env.MONGOOSE_URI)
