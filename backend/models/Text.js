@@ -9,6 +9,14 @@ const textSchema = mongoose.Schema({
     textInfo : {
         type : String,
         required: true
+    },
+    textName : {
+        type: String, 
+        required: true
+    },
+    shouldUpdate: {
+        type: Boolean,
+        default: true
     }
 }, {timestamps : true});
 

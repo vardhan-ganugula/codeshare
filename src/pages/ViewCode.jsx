@@ -38,7 +38,7 @@ function ViewCode() {
   useEffect(() => {
     const query = new URLSearchParams(search);
     let path = query.get("code");
-    if (path && (path.length != 4)) {
+    if (!path || (path.length != 4)) {
       toast.error("Not a valid Code");
       toast.info("Redirecting in 3 seconds");
       setTimeout(() => {

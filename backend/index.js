@@ -6,7 +6,7 @@ require("dotenv").config();
 
 
 const corsOptions = {
-  origin: ['https://textshare.vardhan.works', '*'], 
+  origin: ['https://textshare.vardhan.works', '*', 'http://localhost:5173'], 
   optionsSuccessStatus: 200 
 };
 

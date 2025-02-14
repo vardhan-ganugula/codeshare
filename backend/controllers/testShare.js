@@ -34,8 +34,9 @@ async function handleGetCode(req, res){
 }
 
 async function handlePutText(req, res) {
-    const {textCode, textInfo} = req.body;
-    if(!textCode || !textInfo){
+    const {textCode, textInfo, textName} = req.body;
+    const shouldUpdate = req.body.shouldUpdate || false;
+    if(!textCode || !textInfo || !textName){
         return res.json({
             status : 'error',
             msg : 'insufficient data'
@@ -50,12 +51,15 @@ async function handlePutText(req, res) {
     try {
         const response = await textModel.create({
             textCode : String(textCode),
-            textInfo
+            textInfo,
+            textName,
+            shouldUpdate
         })
         // console.log(response)
         res.json({
             status : 'success',
-            msg : 'record added successfully'
+            msg : 'record added successfully',
+            data : response
         })
     } catch (error) {
         return res.json({

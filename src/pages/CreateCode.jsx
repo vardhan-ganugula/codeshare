@@ -18,25 +18,34 @@ function CreateCode() {
       }
     }
   };
-  const handleCreateCode = async(e) => {
+
+  const [textName, setTextName] = useState('')
+  const [shouldUpdate, setShouldupdate] = useState(true)
+  const handleCreateCode = async (e) => {
     e.preventDefault();
-    if (code.length != 4) {
+    if (code.length != 4 ) {
       toast.error("code must atleat 4 digit");
       return;
     }
+    if(!textName) {
+      toast.error('name is required')
+    }
     try {
       const response = await axiosProfile.post("/create-text", {
-          textInfo : codeText,
-          textCode : code
+        textInfo: codeText,
+        textCode: code,
+        shouldUpdate,
+        textName
       });
       // console.log(response)
-      if(response.data.status == 'success'){
-        toast.success(response.data.msg)
-      }else{
-        toast.error(response.data.msg)
+      if (response.data.status == "success") {
+        toast.success(response.data.msg);
+        console.log(response.data)
+      } else {
+        toast.error(response.data.msg);
       }
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   };
   return (
@@ -48,6 +57,35 @@ function CreateCode() {
             <h1 className="bg-indigo-500 py-2 text-center rounded text-white">
               Create Code
             </h1>
+            <div className="w-full p-3 flex gap-2">
+              <h4 className="text-white rounded bg-indigo-500 w-full py-2 flex-grow-0 text-center">
+                Name
+              </h4>
+              <input
+                type="text"
+                className="h-10 flex-shrink-0 w-2/3 p-2 rounded border-indigo-300 focus:border-indigo-500 outline-none border-2 text-center"
+                value={textName}
+                onChange={(e) => setTextName(e.target.value)}
+                placeholder="enter a unique name"
+              />
+            </div>
+            <div className="w-full p-3 flex gap-2 items-center">
+              <div>
+                Update :
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  name="updateMessage"
+                  id="updateMessage"
+                  hidden
+                  onChange={(e) => setShouldupdate(e.target.checked)}
+                />
+                <label htmlFor="updateMessage" className={`w-[60px] h-7 rounded-full bg-white inline-block relative p-1 cursor-pointer border-2 ${shouldUpdate ? 'border-indigo-400' : 'border-gray-400'} `}>
+                  <span className={`inline-block absolute w-5 h-5 rounded-full top-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out ${shouldUpdate ? 'translate-x-7 bg-indigo-400' : 'translate-x-0 bg-gray-300'}`}></span>
+                </label>
+              </div>
+            </div>
             <div className="w-full p-3 flex gap-2">
               <input
                 type="text"
@@ -63,6 +101,7 @@ function CreateCode() {
                 create
               </button>
             </div>
+            
           </form>
         </aside>
         <section className="w-full flex-grow md:h-full sm:min-h-[50vh]">
