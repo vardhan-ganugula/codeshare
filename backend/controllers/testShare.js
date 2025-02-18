@@ -15,7 +15,7 @@ async function handleGetCode(req, res){
         if(record){
             return res.json({
                 status : 'success',
-                data : {textCode : record.textCode, textInfo : record.textInfo, createdAt : record.createdAt}
+                data : {textCode : record.textCode, textInfo : record.textInfo, createdAt : record.createdAt, shouldUpdate : record.shouldUpdate},
             })
         }
     }catch(er){
@@ -34,9 +34,9 @@ async function handleGetCode(req, res){
 }
 
 async function handlePutText(req, res) {
-    const {textCode, textInfo, textName} = req.body;
+    const {textCode, textInfo, textName, expiryDate} = req.body;
     const shouldUpdate = req.body.shouldUpdate || false;
-    if(!textCode || !textInfo || !textName){
+    if(!textCode || !textInfo || !textName || !expiryDate){
         return res.json({
             status : 'error',
             msg : 'insufficient data'
@@ -48,14 +48,21 @@ async function handlePutText(req, res) {
             msg : 'not a valid text code'
         })
     } 
+    if(new Date(expiryDate).getTime() < Date.now()){
+        return res.json({
+            status : 'error',
+            msg : 'expiry date must be greater than today'   
+        })
+    }
     try {
         const response = await textModel.create({
             textCode : String(textCode),
             textInfo,
             textName,
-            shouldUpdate
+            shouldUpdate,
+            expiryDate
         })
-        // console.log(response)
+
         res.json({
             status : 'success',
             msg : 'record added successfully',
@@ -100,7 +107,7 @@ async function handleUpdateText(req, res){
         })
     }
     try{
-        const result = await textModel.findOneAndUpdate({textCode}, {textInfo})
+        const result = await textModel.findOneAndUpdate({textCode, shouldUpdate: true}, {textInfo})
         if(result){
             return res.json({
                 status : 'success',
@@ -115,6 +122,68 @@ async function handleUpdateText(req, res){
     }
 
 }
+
+async function handleSearch(req, res){
+    const {value} = req.query;
+    if(!value){
+        return res.json({
+            status : 'error',
+            msg : 'search value is required'
+        })
+    }
+    const pileLine = [
+        {
+            $match : {
+                $or : [
+                    {
+                        "textName" : {$regex : value,
+                            $options : 'i'
+                        }
+                    },
+                    {
+                        "textInfo" : {$regex : value, $options: 'i'}
+                    },
+                    {
+                        "textName" : {$regex : value, $options: 'i'}
+                    }
+                    
+                ]   
+            },
+        },
+        {
+            $project : {
+                "textName" : 1,
+                "textInfo" : 1,
+                "textCode" : 1,
+                "shouldUpdate" : 1
+            }
+        }
+    ]
+
+    try {
+        const record = await textModel.aggregate(pileLine)
+        return res.json({
+            status : 'success',
+            data : record,
+            msg : 'search completed',}).status(200)
+
+    } catch (error) {
+        console.log("Search record : " + error)
+        return res.json({
+            status : 'error',
+            msg : error.toString()
+        }).status(500)
+    }
+
+    return res.json({
+        status : 'error',
+        msg : 'error while searching'
+    }).status(500)
+
+}
+
+
+
 module.exports = {
-    handleGetCode,handlePutText,handleUpdateText
+    handleGetCode,handlePutText,handleUpdateText,handleSearch
 }

@@ -4,9 +4,7 @@ import {Header, HomepageMain, Footer} from '../components'
 function Homepage() {
   return (
     <>
-      <Header/>
       <HomepageMain/>
-      <Footer/>
     
     </>
   )

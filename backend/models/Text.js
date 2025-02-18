@@ -17,9 +17,14 @@ const textSchema = mongoose.Schema({
     shouldUpdate: {
         type: Boolean,
         default: true
+    },
+    expiryDate: {
+        type: Date,
+        required: true
     }
 }, {timestamps : true});
 
+textSchema.index({expiryDate: 1}, {expireAfterSeconds: 0}) // this will delete the document after the expiry date
 
 const textModel = mongoose.model('textCode', textSchema)
 

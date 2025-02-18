@@ -75,7 +75,6 @@ function EditCode() {
   }
   return (
     <>
-      <Header />
       <main className="md:h-[87vh] h-auto w-full p-2 flex flex-col gap-2 md:flex-row">
         <aside className="md:w-[350px] w-full p-2 md:h-full border-r-2 border-gray-100 ">
           <form className="w-full shadow rounded" onSubmit={handleUpdateCode}>
@@ -123,7 +122,6 @@ function EditCode() {
           ></textarea>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

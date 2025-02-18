@@ -6,9 +6,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { LuDot } from "react-icons/lu";
 
-export default function Sidebar({ textCode, time, textInfo }) {
+export default function Sidebar({ textCode, time, textInfo, shouldUpdate }) {
   const [qrCode, setQrcode] = useState(null);
-  const [extension, setExtension] = useState('txt')
+  const [extension, setExtension] = useState("txt");
   useEffect(() => {
     QRCode.toDataURL(window.location.href).then(setQrcode);
   }, []);
@@ -44,7 +44,15 @@ export default function Sidebar({ textCode, time, textInfo }) {
         <QrComponent qrCode={qrCode} />
       </div>
       <div className="w-full  p-3 gap-2 shadow flex items-center">
-        <div className="h-full px-2 py-2 text-black flex items-center"><LuDot size={20}/><input type="text" className="w-10 outline-none" value={extension} onChange={e => setExtension(e.target.value)} /></div>
+        <div className="h-full px-2 py-2 text-black flex items-center">
+          <LuDot size={20} />
+          <input
+            type="text"
+            className="w-10 outline-none"
+            value={extension}
+            onChange={(e) => setExtension(e.target.value)}
+          />
+        </div>
         <button
           onClick={generateCode}
           className="flex-grow text-center py-2 rounded shadow bg-violet-500 text-white"
@@ -52,11 +60,17 @@ export default function Sidebar({ textCode, time, textInfo }) {
           Download Code
         </button>
       </div>
-      <div className="w-full  p-3 gap-2 shadow flex items-center">
-        <button className="text-center py-2 rounded shadow bg-sky-500 tracking-wider text-lg text-white w-full" onClick={(e)=> navigate(`/edit/${textCode}`)} >
-          edit
-        </button>
-      </div>
+      {shouldUpdate && (
+        <div className="w-full  p-3 gap-2 shadow flex items-center">
+          <button
+            className="text-center py-2 rounded shadow bg-sky-500 tracking-wider text-lg text-white w-full"
+            disabled={!shouldUpdate}
+            onClick={(e) => navigate(`/edit/${textCode}`)}
+          >
+            edit
+          </button>
+        </div>
+      )}
     </aside>
   );
 }
