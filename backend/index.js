@@ -30,12 +30,12 @@ mongoose
 
 
 
-app.get('/view-text', handleGetCode);
-app.post('/create-text', handlePutText);
-app.post('/update-text', handleUpdateText)
-app.get('/search', handleSearch)
-app.post('/create-group', handleCreateGroup)
-app.post('/update-group', handleAddTextToGroup)
+app.get('/api/view-text', handleGetCode);
+app.post('/api/create-text', handlePutText);
+app.post('/api/update-text', handleUpdateText)
+app.get('/api/search', handleSearch)
+app.post('/api/create-group', handleCreateGroup)
+app.post('/api/update-group', handleAddTextToGroup)
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static(path.join(__dirname, '../dist')));
