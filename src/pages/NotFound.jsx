@@ -1,6 +1,8 @@
 import React from "react";
 import NotFoundGIF from "../assets/notfound.gif";
+import { useNavigate } from "react-router-dom";
 const NotFound = () => {
+  const navigate = useNavigate();
   return (
     <main className="h-screen w-full flex justify-center items-center gap-10">
       <div className="w-1/3 h-[500px]">
@@ -21,6 +23,15 @@ const NotFound = () => {
             How you got here is a mystery. But you can click on the button below
             to go back to the home page
           </p>
+          <button className="bg-blue-500 text-white px-5 py-3 text-sm rounded-md my-3"
+          
+          onClick={()=>{
+            navigate('/')
+          }}
+          >
+            Go back to the home page
+          </button>
+
         </div>
       </div>
     </main>
