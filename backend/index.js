@@ -19,7 +19,6 @@ const corsOptions = {
 
 
 app.use(cors(corsOptions))
-app.use('public', express.static('dist'))
 mongoose
   .connect(process.env.MONGOOSE_URI)
   .then((success) => console.log("connection success"))
