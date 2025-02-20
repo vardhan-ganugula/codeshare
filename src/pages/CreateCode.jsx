@@ -142,9 +142,9 @@ function CreateCode() {
         </aside>
         <section className="w-full flex-grow md:h-full sm:min-h-[50vh]">
           <textarea
-            className="w-full h-full outline-none p-3"
+            className="w-full md:h-full outline-none p-3"
             name="textmessage"
-            value={codeText}
+            placeholder={codeText}
             onChange={(e) => setCodetext(e.target.value)}
           ></textarea>
         </section>

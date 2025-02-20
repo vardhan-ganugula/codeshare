@@ -15,7 +15,7 @@ async function handleGetCode(req, res){
         if(record){
             return res.json({
                 status : 'success',
-                data : {textCode : record.textCode, textInfo : record.textInfo, createdAt : record.createdAt, shouldUpdate : record.shouldUpdate},
+                data : {textCode : record.textCode, textInfo : record.textInfo, createdAt : record.createdAt, shouldUpdate : record.shouldUpdate, textName: record.textName},
             })
         }
     }catch(er){

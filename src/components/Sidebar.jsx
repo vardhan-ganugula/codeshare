@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { LuDot } from "react-icons/lu";
 
-export default function Sidebar({ textCode, time, textInfo, shouldUpdate }) {
+export default function Sidebar({ textCode, time, textInfo, shouldUpdate, textName }) {
   const [qrCode, setQrcode] = useState(null);
   const [extension, setExtension] = useState("txt");
   useEffect(() => {
@@ -24,6 +24,12 @@ export default function Sidebar({ textCode, time, textInfo, shouldUpdate }) {
   return (
     <aside className="md:w-[350px] p-2 md:h-full border-r-2 border-zinc-100 flex-shrink-0 w-full border-2">
       <div className="flex flex-col gap-3 bg-white shadow rounded p-2">
+      <div>
+          <span className="text-start font-bold text-xl text-indigo-600">
+            Name :
+          </span>
+          <span> {textName}</span>
+        </div>
         <div>
           <span className="text-start font-bold text-xl text-indigo-600">
             Created at :
@@ -36,6 +42,7 @@ export default function Sidebar({ textCode, time, textInfo, shouldUpdate }) {
           </span>
           <span> {textCode}</span>
         </div>
+        
       </div>
       <div className="w-full shadow p-2 mt-2">
         <h1 className="w-full py-3 bg-indigo-500 rounded text-center font-bold text-xl text-white">

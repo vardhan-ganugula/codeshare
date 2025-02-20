@@ -10,6 +10,7 @@ function ViewCode() {
   const [textCode, setTextCode] = useState('0000');
   const [time, setTime] = useState(Date.now())
   const [shouldUpdate, setShouldupdate] = useState(false)
+  const [textName, setTextName] = useState('')
   let { search } = useLocation();
   const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ function ViewCode() {
         setTextinfo(response.data.data.textInfo)
         setTime(response.data.data.createdAt)
         setShouldupdate(response.data.data.shouldUpdate)
+        setTextName(response.data.data.textName)
       }else{
         toast.error(response.data.msg)
         toast.info('redirecting in 2seconds')
@@ -79,7 +81,7 @@ function ViewCode() {
   return (
     <>
       <main className='flex gap-2 flex-col md:flex-row h-[87vh] shadow'>
-        <Sidebar textCode={textCode} time={time} textInfo={textInfo} shouldUpdate={shouldUpdate} />
+        <Sidebar textCode={textCode} time={time} textInfo={textInfo} shouldUpdate={shouldUpdate} textName={textName} />
         <section className='flex-grow p-3 overflow-hidden text-wrap overflow-y-auto h-full' style={{userSelect: 'text',
           whiteSpace: 'pre-wrap'
          }}>
