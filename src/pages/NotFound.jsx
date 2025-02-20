@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 const NotFound = () => {
   const navigate = useNavigate();
   return (
-    <main className="h-screen w-full flex justify-center items-center gap-10">
-      <div className="w-1/3 h-[500px]">
+    <main className="min-h-screen w-full flex md:flex-row flex-col justify-center items-center md:gap-10">
+      <div className="md:w-1/3 h-[300px] md:h-[500px] bg-red-400">
         <img
           src={NotFoundGIF}
           alt="404"
           className="w-full h-full aspect-square object-cover"
         />
       </div>
-      <div className="w-1/3 flex flex-col justify-center items-center gap-5 pl-10">
+      <div className="md:w-1/3 flex flex-col justify-center items-center gap-5 md:pl-10 pb-10">
         <h1 className="text-9xl font-bold text-gray-800">404</h1>
         <h2 className="text-4xl font-bold">UH OH ! You're Lost</h2>
         <div className="w-[350px] font-semibold text-center">
