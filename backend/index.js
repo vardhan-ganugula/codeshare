@@ -33,9 +33,9 @@ app.get('/api/view-text', handleGetCode);
 app.post('/api/create-text', handlePutText);
 app.post('/api/update-text', handleUpdateText)
 app.get('/api/search', handleSearch)
+app.get('/api/search-group', handleSearchGroup)
 app.post('/api/create-group', handleCreateGroup)
 app.post('/api/update-group', handleAddTextToGroup)
-app.get('/api/search-group', handleSearchGroup)
 
 
 if(process.env.NODE_ENV === 'production'){
