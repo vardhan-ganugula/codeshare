@@ -5,5 +5,5 @@ import TextForm from "./TextForm"
 import RenderInpts from './RenderInpts'
 import Sidebar from "./Sidebar"
 import QrComponent from './QrComponent'
-
-export{Header, Footer,HomepageMain,TextForm,RenderInpts,Sidebar, QrComponent}
+import Table from './Table'
+export{Header, Footer,HomepageMain,TextForm,RenderInpts,Sidebar, QrComponent, Table}

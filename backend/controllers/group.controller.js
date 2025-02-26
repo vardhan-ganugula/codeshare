@@ -71,6 +71,47 @@ const handleAddTextToGroup = async (req, res) => {
     }
 }
 
+// search group by name and description and id 
 
+const handleSearchGroup = async (req, res) => {
+    const {search} = req.query;
+    if (!search) {
+        return res.status(400).send({
+            status: 'error',
+            message: "search query can not be empty"
+        });
+    }
 
-module.exports = {handleCreateGroup, handleAddTextToGroup}
+    try {
+        const pipeline = [
+            {
+                $match : {
+                    $or: [
+                        {name: {$regex: search, $options: 'i'}},
+                        {description: {$regex: search, $options: 'i'}},
+                        {groupCode: {$regex: search, $options: 'i'}}
+                    ]
+                }
+            }
+        ]
+        const results = await groupModel.aggregate(pipeline);
+        return res.status(200).json({
+            status: 'success',
+            groups: results
+        });
+    } catch (error) {
+        return res.status(500).json({
+            status: 'error',
+            message: error.message || "Some error occurred while searching the group."
+        });
+        
+    }
+
+    return res.status(200).json({
+        status: 'error',
+        message: "something went wrong"
+    });
+
+}
+
+module.exports = {handleCreateGroup, handleAddTextToGroup, handleSearchGroup}

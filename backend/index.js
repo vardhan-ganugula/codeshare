@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const express = require('express')
 const cors = require('cors')
 const {handleGetCode,handlePutText,handleUpdateText,handleSearch} = require('./controllers/testShare')
-const {handleCreateGroup, handleAddTextToGroup} = require('./controllers/group.controller')
+const {handleCreateGroup, handleAddTextToGroup, handleSearchGroup} = require('./controllers/group.controller')
 const path = require('path')
 require("dotenv").config();
 
@@ -35,6 +35,8 @@ app.post('/api/update-text', handleUpdateText)
 app.get('/api/search', handleSearch)
 app.post('/api/create-group', handleCreateGroup)
 app.post('/api/update-group', handleAddTextToGroup)
+app.get('/api/search-group', handleSearchGroup)
+
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static(path.join(__dirname, '../dist')));

@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import axiosProfile from "../utils/axiosProfile";
 import { BiSolidTrash } from "react-icons/bi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import Table from "../components/Table";
+import {Table} from "../components/";
 
 const CreateGroup = () => {
   const [formData, setFormData] = React.useState({
@@ -92,24 +92,7 @@ const CreateGroup = () => {
 
   const debounceSearch = useCallback(debounce(handleSearch, 500),[]);
 
-  const [sortConfig, setSortConfig] = React.useState({
-    key: null,
-    direction: "ascending",
-  });
 
-  const handleSort = useCallback( (key) => {
-    let direction = "ascending";
-    if (sortConfig.key === key && sortConfig.direction === "ascending") {
-      direction = "descending";
-    }
-    setSortConfig({ key, direction });
-    const sortedResults = [...searchResults].sort((a, b) => {
-      if (a[key] < b[key]) return direction === "ascending" ? -1 : 1;
-      if (a[key] > b[key]) return direction === "ascending" ? 1 : -1;
-      return 0;
-    });
-    setSearchResults(sortedResults);
-  }, [sortConfig, searchResults]);
 
   const handleAddTextCode = useCallback( (textCode) => {
     if (textCodes.includes(textCode)) {
@@ -290,10 +273,10 @@ const CreateGroup = () => {
         {searchResults && searchResults.length > 0 && (
           <Table
             name="Search Results"
-            handleSort={handleSort}
-            searchResults={searchResults}
-            handleAddTextCode={handleAddTextCode}
+            results={searchResults}
             textCodes={textCodes}
+            enableAddText={true}
+            handleAddTextCode={handleAddTextCode}
           />
         )}
       </div>
