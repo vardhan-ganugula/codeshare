@@ -8,8 +8,8 @@ export const homePageUrls = [
         url : '/create'
     },
     {
-        linkName : 'View',
-        url : '/view'
+        linkName : 'Search',
+        url : '/search-group'
     },
 
 ]
