@@ -3,7 +3,6 @@ const groupModel = require('../models/group.model.js');
 
 // Create and Save a new group
 const handleCreateGroup = async (req, res) => {
-    console.log('create group called')
     const {name, description, groupCode, textCodes} = req.body;
     // Validate request
     if (!name || !groupCode || !textCodes || textCodes.length === 0) {
@@ -13,8 +12,9 @@ const handleCreateGroup = async (req, res) => {
             message: "group contents can not be empty"
         });
     }
-    // Create a group
-    const validGroupCodes = textCodes.every(code => typeof code === 'number');
+    // Create a group 
+    console.log(groupCode)
+    const validGroupCodes = textCodes.every(code => code.length === 4);
     if (!validGroupCodes) {
         return res.status(400).json({
             status: 'error',

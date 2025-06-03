@@ -121,7 +121,7 @@ const SearchGroup = () => {
                   >
                     <td className="p-4 border-r">{textCode}</td>
                     <td className="p-4 border-r">
-                        <Link to={`/view?code=${textCode}`}>{import.meta.env.VITE_BACKEND.substring(0, import.meta.env.VITE_BACKEND.length - 4)}view?code={textCode}</Link>
+                        <a target="_blank" href={`/view?code=${textCode}`}>{import.meta.env.VITE_BACKEND.substring(0, import.meta.env.VITE_BACKEND.length - 4)}view?code={textCode}</a>
                     </td>
                   </tr>
                 ))}

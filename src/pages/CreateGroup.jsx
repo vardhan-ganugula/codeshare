@@ -74,7 +74,7 @@ const CreateGroup = () => {
         name: formData.groupName,
         groupCode: formData.groupCode,
         description: formData.groupDescription,
-        textCodes: textCodes.map((code) => parseInt(code)),
+        textCodes
       });
       if (resp.data.status !== "success") {
         toast.error(resp.data.message);

@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const { toString } = require('qrcode');
 
 const groupSchema = mongoose.Schema({
     name: {
@@ -10,7 +11,7 @@ const groupSchema = mongoose.Schema({
         default: 'No description provided'
     },
     groupCode: {
-        type: Number,
+        type: String,
         required: true,
         unique: true
     },
