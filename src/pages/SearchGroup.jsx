@@ -104,10 +104,13 @@ const SearchGroup = () => {
             <thead>
               <tr className="bg-white border-b-2 border-blue-600">
                 <th className="p-3 text-left font-semibold cursor-pointer text-blue-600 bg-white hover:text-white hover:bg-blue-600 transition-colors duration-200 w-40 ">
-                  TextCodes
+                  TextCode
                 </th>
                 <th className="p-3 text-left font-semibold cursor-pointer  text-blue-600 bg-white hover:text-white hover:bg-blue-600 transition-colors duration-200">
-                  URLS
+                  URL
+                </th>
+                <th className="p-3 text-left font-semibold cursor-pointer  text-blue-600 bg-white hover:text-white hover:bg-blue-600 transition-colors duration-200">
+                  Title
                 </th>
               </tr>
             </thead>
