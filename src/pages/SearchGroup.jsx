@@ -10,6 +10,7 @@ const SearchGroup = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [groups, setGroups] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [titles, setTitles] = useState([]);
   const handleSearch = useDebounce(async (value) => {
     if (!value.trim()) {
       setGroups([]);
@@ -37,6 +38,7 @@ const SearchGroup = () => {
   const handleSelectGroup = (group) => {
     console.log(group);
     setSearchResults(group.textCodes);
+    setTitles(group.textTitles)
   };
   return (
     <main className="min-h-screen p-12 bg-gray-100">
@@ -122,6 +124,13 @@ const SearchGroup = () => {
                     <td className="p-4 border-r">{textCode}</td>
                     <td className="p-4 border-r">
                         <a target="_blank" href={`/view?code=${textCode}`}>{import.meta.env.VITE_BACKEND.substring(0, import.meta.env.VITE_BACKEND.length - 4)}view?code={textCode}</a>
+                    </td>
+                    <td>
+                      <span>
+                        {
+                          titles[indx]
+                        }
+                      </span>
                     </td>
                   </tr>
                 ))}

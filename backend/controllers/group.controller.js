@@ -1,5 +1,5 @@
 const groupModel = require('../models/group.model.js');
-
+const textModel = require('../models/Text.js');
 
 // Create and Save a new group
 const handleCreateGroup = async (req, res) => {
@@ -95,6 +95,18 @@ const handleSearchGroup = async (req, res) => {
             }
         ]
         const results = await groupModel.aggregate(pipeline);
+        for(const group of results) {
+            const textTitles = [];
+            for(const textCode of group.textCodes) {
+                const text = await textModel.findOne({textCode: textCode});
+                if(text) {
+                    textTitles.push(text.textName);
+                }else{
+                    textTitles.push("No title");
+                }
+            } 
+            group.textTitles = textTitles;
+        }
         return res.status(200).json({
             status: 'success',
             groups: results
