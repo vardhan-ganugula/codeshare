@@ -128,7 +128,7 @@ const SearchGroup = () => {
                     <td className="p-4 border-r">
                         <a target="_blank" href={`/view?code=${textCode}`}>{import.meta.env.VITE_BACKEND.substring(0, import.meta.env.VITE_BACKEND.length - 4)}view?code={textCode}</a>
                     </td>
-                    <td>
+                    <td className="p-4 border-r">
                       <span>
                         {
                           titles[indx]

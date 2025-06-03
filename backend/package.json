@@ -1,6 +1,6 @@
 {
   "name": "textshare",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "share your text across the internet",
   "main": "index.js",
   "scripts": {
